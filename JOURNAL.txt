@@ -1,0 +1,19 @@
+# Journal
+
+## 2015-12-29 20:00
+
+I wrote some example code last week in another the Chris Fritz project to parse and format posts, drafts, and data files.  My idea is to read the files in the Jekyll posts and data folders.  Then I can run whatever manipulations I want and write them back to the project.
+
+I also was working on a build and publish script for that Jekyll project.  Once I modify the Jekyll files, I can trigger a script to generate the new files and upload them to the correct location.
+
+This week, I moved the parsing and writing code into its own project and started organizing it into classes.  I am loading the contents of the files into memory.  If this project gets more mature, I can always add a database, and generate the static pages from that.  But that will be much later.
+
+I will setup better git branches soon.  I am currently working off master.  I need to switch before too long.
+
+I am keeping the path to the project that is being read and written to in a config YAML file.  I have git ignoring this file to keep a separation between these projects.  The format of this config file will need to be improved in the future.
+
+I added a Gemfile and lock file with bundler.  I currently only have it including Sinatra.  My current plan is to create a very simple front-end with a very minimal set of routes.  There is also an app.rb file that I will be using for the Sinatra app, but it is still empty.  I am trying to tidy up the parsing and writing.
+
+I split articles and data into separate files in lib/.  I need to decide on better names.  I may also need to refine the structure of these classes slightly.  I want to clean-up the expectations for the classes that will be parsing and writing the backend files, so that I can keep all of that logic cleanly isolated.
+
+Then I have this journal file.  There will be typos and mistakes.  But it will also keep a general log of some of my thinking about this project.  And I will possibly flesh out some news ideas as I articulate my thoughts with words.
