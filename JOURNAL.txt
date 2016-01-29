@@ -17,3 +17,33 @@ I added a Gemfile and lock file with bundler.  I currently only have it includin
 I split articles and data into separate files in lib/.  I need to decide on better names.  I may also need to refine the structure of these classes slightly.  I want to clean-up the expectations for the classes that will be parsing and writing the backend files, so that I can keep all of that logic cleanly isolated.
 
 Then I have this journal file.  There will be typos and mistakes.  But it will also keep a general log of some of my thinking about this project.  And I will possibly flesh out some news ideas as I articulate my thoughts with words.
+
+## 2016-01-29 10:30, Friday
+
+I have been mulling over this project and I have an idea.
+
+I will create client projects with a structure like the following.
+
+    cms/
+      data/
+        data/schedule.csv
+        drafts/draft-post.markdown
+        posts/2016-01-29-hello-world.markdown
+      hooks/
+        get-index
+        get-publish
+        post-media
+        post-post
+        post-schedule
+      views/
+        edit-post.html
+        edit-schedule.html
+        index.html
+        schedule.json
+      pwd
+
+This project will be the controller.  It will authenticate, route, and trigger scripts.  This is intended for just a couple infrequently updated sites that I administrate, so I am hoping that all these system calls won't be an issue.
+
+The end result should be that the end-user is served a static site.  Eventually, I may even look into CDNs and site compression.  And the owner is served a CMS web app.  I'll worry about scale once I am serving enough clients to justify the return on investment.
+
+I'll review these sections later to refine them a bit more.
