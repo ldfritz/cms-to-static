@@ -19,10 +19,21 @@ class ClientCMS < Sinatra::Base
 #    users[username] == password
 #  end
 
-  get "/:client/*" do |client, path|
-    viewpath = "#{@@project[client]["path"]}/views/#{path}".gsub("//", "/")
-    if File.file?(viewpath)
-      File.read(viewpath)
+  get "/:client/*" do |client, route|
+    render_file(format_path(client, route))
+  end
+
+  private
+  def format_path(client, path)
+    default_filename = "/index.html"
+    path = "#{@@project[client]["path"]}/views/#{path}"
+    path << default_filename if File.file?(path + default_filename)
+    path.gsub!("//", "/")
+  end
+
+  def render_file(filename)
+    if File.file?(filename)
+      File.read(filename)
     else
       "#{viewpath} does not exist."
     end
