@@ -21,7 +21,7 @@ class ClientCMS < Sinatra::Base
 
   get "/:client/*" do |client, path|
     viewpath = "#{@@project[client]["path"]}/views/#{path}"
-    if File.exists?(viewpath)
+    if File.file?(viewpath)
       File.read(viewpath)
     else
       "#{viewpath} does not exist."
