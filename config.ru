@@ -19,8 +19,13 @@ class ClientCMS < Sinatra::Base
     users[username] == password
   end
 
-  get "/:client/" do |client|
-    "#{client} " + (@@project[client] ? "exists." : "does not exist.")
+  get "/:client/*" do |client, path|
+    viewpath = "#{@@project[client]["path"]}/views/#{path}"
+    if File.exists?(viewpath)
+      File.read(viewpath)
+    else
+      "#{viewpath} does not exist."
+    end
   end
 end
 
