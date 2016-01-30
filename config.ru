@@ -10,14 +10,14 @@ class ClientCMS < Sinatra::Base
     self
   end
 
-  use Rack::Auth::Basic do |username, password|
-    users = @@project.reduce({}) do |result, (_, data)|
-      data["credentials"].each do |name, pwd|
-        result[name] = pwd
-      end
-    end
-    users[username] == password
-  end
+#  use Rack::Auth::Basic do |username, password|
+#    users = @@project.reduce({}) do |result, (_, data)|
+#      data["credentials"].each do |name, pwd|
+#        result[name] = pwd
+#      end
+#    end
+#    users[username] == password
+#  end
 
   get "/:client/*" do |client, path|
     viewpath = "#{@@project[client]["path"]}/views/#{path}".gsub("//", "/")
