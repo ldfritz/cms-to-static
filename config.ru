@@ -20,7 +20,7 @@ class ClientCMS < Sinatra::Base
   end
 
   get "/:client/*" do |client, path|
-    viewpath = "#{@@project[client]["path"]}/views/#{path}"
+    viewpath = "#{@@project[client]["path"]}/views/#{path}".gsub("//", "/")
     if File.file?(viewpath)
       File.read(viewpath)
     else
